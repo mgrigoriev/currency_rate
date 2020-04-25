@@ -11,7 +11,7 @@ require "action_mailer/railtie"
 require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
-# require "action_cable/engine"
+require "action_cable/engine"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -24,6 +24,9 @@ module CurrencyRate
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    config.time_zone = 'Moscow'
+    config.active_record.default_timezone = :utc
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
@@ -31,5 +34,9 @@ module CurrencyRate
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.action_cable.disable_request_forgery_protection = true
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

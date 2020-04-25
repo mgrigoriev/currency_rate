@@ -5,6 +5,7 @@ module Admin
     CURRENCY = 'USD'
 
     before_action :load_forced_rate, only: %i[edit update]
+    after_action :schedule_broadcasts, only: %i[create update]
 
     def new
       @forced_rate = ForcedRate.new(currency: CURRENCY)
@@ -43,9 +44,12 @@ module Admin
     end
 
     def redirect_to_success
-      message = "Курс #{CURRENCY} успешно установлен"
+      redirect_to admin_root_path, flash: { success: "Курс #{CURRENCY} успешно установлен" }
+    end
 
-      redirect_to admin_root_path, flash: { success: message}
+    def schedule_broadcasts
+      BroadcastCurrentRateJob.perform_now
+      BroadcastCurrentRateJob.set(wait_until: @forced_rate.expire_at).perform_later
     end
   end
 end

@@ -1,0 +1,5 @@
+:schedule:
+  central_bank_rate_updater:
+    every: '1h'
+    class: FetchCentralBankRateJob
+    queue: 'default'

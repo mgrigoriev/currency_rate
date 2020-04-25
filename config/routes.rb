@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#index'
+
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
