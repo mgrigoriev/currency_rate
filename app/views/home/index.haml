@@ -1,0 +1,6 @@
+.js-usd-rate
+  - if @usd_rate.present?
+    %h1
+      = formatted_currency_rate(@usd_rate.price)
+  - else
+    Информация о курсе доллара скоро появится
