@@ -1,0 +1,19 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %title USD/RUB
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'application'
+
+  %body
+    = render 'layouts/navbar'
+
+    .container
+      = yield
