@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_115252) do
+ActiveRecord::Schema.define(version: 2020_04_25_162625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2020_04_25_115252) do
     t.decimal "price", precision: 10, scale: 4, null: false
     t.datetime "created_at", null: false
     t.index ["currency"], name: "index_central_bank_rates_on_currency"
+  end
+
+  create_table "forced_rates", force: :cascade do |t|
+    t.string "currency", null: false
+    t.decimal "price", precision: 10, scale: 4, null: false
+    t.datetime "expire_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["currency"], name: "index_forced_rates_on_currency", unique: true
   end
 
 end
