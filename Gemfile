@@ -12,6 +12,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 gem 'hamlit'
+gem 'simple_form'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
