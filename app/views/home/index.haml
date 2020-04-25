@@ -1,6 +1,6 @@
-.text-success.text-center.js-current-rate
-  - if @usd_price.present?
-    %h1
+.text-success.text-center
+  %h1.js-current-rate
+    - if @usd_price.present?
       = @usd_price
-  - else
-    Информация о курсе доллара скоро появится
+    - else
+      Информация о курсе доллара скоро появится
