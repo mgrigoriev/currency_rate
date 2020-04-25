@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @usd_rate = CentralBankRate.for_usd.last
+    @usd_rate = CurrentRate.for_usd
   end
 end
