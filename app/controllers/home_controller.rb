@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @usd_price = CurrentRate.formatted_price_for_usd
+    @usd_price = CurrentRateView.formatted_price_for_usd
   end
 end

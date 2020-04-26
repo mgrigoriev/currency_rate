@@ -6,10 +6,14 @@ class ForcedRate < ApplicationRecord
   validates :expire_at, presence: true
   validate :expires_in_future
 
-  scope :for_usd, -> { where(currency: 'USD') }
+  class << self
+    def for(currency)
+      where(currency: currency).find_by('expire_at > ?', Time.current)
+    end
 
-  def self.active_for_usd
-    for_usd.find_by('expire_at > ?', Time.current)
+    def for_usd
+      self.for('USD')
+    end
   end
 
   def expires_in_future
