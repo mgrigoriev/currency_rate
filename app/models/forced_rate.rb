@@ -17,6 +17,6 @@ class ForcedRate < ApplicationRecord
   end
 
   def expires_in_future
-    errors.add(:expire_at, 'must be in the future') if expire_at.present? && expire_at <= Time.current
+    errors.add(:expire_at, 'должно быть в будущем') if expire_at.present? && expire_at <= Time.current
   end
 end

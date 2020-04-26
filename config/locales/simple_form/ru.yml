@@ -1,0 +1,14 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Исправьте, пожалуйста, указанные ошибки:"
+    labels:
+      defaults:
+        commit: 'Сохранить'
+        price: "Форсированный курс USD"
+        expire_at: "Действует до (Московское время)"

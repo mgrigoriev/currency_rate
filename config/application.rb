@@ -27,6 +27,9 @@ module CurrencyRate
     config.time_zone = 'Moscow'
     config.active_record.default_timezone = :utc
 
+    # Load locale files from sub-directories
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -1,4 +1,4 @@
 = simple_form_for [:admin, @forced_rate] do |f|
-  = f.input :price, label: 'Форсированный курс USD'
-  = f.input :expire_at, label: 'Действует до'
-  = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+  = f.input :price
+  = f.input :expire_at
+  = f.button :submit, class: 'btn btn-primary'
