@@ -26,8 +26,7 @@ describe CurrentRate do
 
     context 'when only expired forced rate is present' do
       before do
-        FactoryBot.create(:forced_rate, price: 72, expire_at: 1.second.from_now)
-        sleep 1
+        FactoryBot.build(:forced_rate, price: 72, expire_at: 1.hour.ago).save(validate: false)
       end
 
       it 'returns nil' do
@@ -49,8 +48,7 @@ describe CurrentRate do
     context 'when central bank rate and expired forced rate are present' do
       before do
         FactoryBot.create(:central_bank_rate, price: 75)
-        FactoryBot.create(:forced_rate, price: 77, expire_at: 1.second.from_now)
-        sleep 1
+        FactoryBot.build(:forced_rate, price: 77, expire_at: 1.hour.ago).save(validate: false)
       end
 
       it 'returns central bank rate' do
