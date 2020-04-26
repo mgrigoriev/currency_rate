@@ -13,4 +13,22 @@ describe ForcedRate do
 
     it { is_expected.to validate_uniqueness_of(:currency) }
   end
+
+  describe '#expire_at' do
+    context 'is in the past' do
+      before do
+        subject { FactoryBot.build(:forced_rate, price: '75', expire_at: 1.second.ago) }
+      end
+
+      it { expect(subject).not_to be_valid  }
+    end
+
+    context 'is in the future' do
+      before do
+        subject { FactoryBot.build(:forced_rate, price: '75', expire_at: 1.minute.from_now) }
+      end
+
+      it { expect(subject).not_to be_valid  }
+    end
+  end
 end
