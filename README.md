@@ -1,24 +1,28 @@
-# README
+# USD/RUB app (Q2)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Watch USD/RUB rate like a boss, without refreshing your browser.
 
-Things you may want to cover:
+Requirements
+------------
+* PostgreSQL
+* Redis
 
-* Ruby version
+Instructions
+------------
+```
+git clone git@github.com:mgrigoriev/currency_rate.git
+cd currency_rate
 
-* System dependencies
+gem install bundler
+gem install foreman
 
-* Configuration
+bundle install
 
-* Database creation
+rails db:create && rails db:migrate && rails db:seed
 
-* Database initialization
+foreman start
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Author
+------
+Mikhail Grigoriev, [mgrigoriev@gmail.com](mailto:mgrigoriev@gmail.com)
