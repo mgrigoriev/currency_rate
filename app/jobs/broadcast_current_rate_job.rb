@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BroadcastCurrentRateJob < ApplicationJob
   queue_as :default
 

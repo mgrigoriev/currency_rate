@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BroadcastCurrentRate
   def self.call
     price = CurrentRateView.formatted_price_for_usd
