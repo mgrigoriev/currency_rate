@@ -3,7 +3,8 @@
 require 'open-uri'
 
 class FetchCentralBankRate
-  XML_URL   = 'http://www.cbr.ru/scripts/XML_daily.asp'
+  CURRENCY = 'USD'
+  XML_URL = 'http://www.cbr.ru/scripts/XML_daily.asp'
   USD_XPATH = "//ValCurs/Valute[@ID='R01235']/Value"
 
   def self.call
@@ -15,6 +16,8 @@ class FetchCentralBankRate
     doc = Nokogiri::XML(page)
     usd_rate = doc.xpath(USD_XPATH).text.sub(',', '.').to_f
 
-    CentralBankRate.create!(currency: 'USD', price: usd_rate) if usd_rate > 0
+    return unless usd_rate.positive?
+
+    CentralBankRate.today.find_or_create_by!(currency: CURRENCY, price: usd_rate)
   end
 end

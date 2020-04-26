@@ -6,6 +6,7 @@ class CentralBankRate < ApplicationRecord
 
   scope :for, ->(currency) { where(currency: currency) }
   scope :by_created_at_desc, -> { order(created_at: :desc) }
+  scope :today, -> { where(created_at: Time.zone.today.all_day) }
 
   def self.latest_for_usd
     self.for('USD').by_created_at_desc.first
