@@ -22,7 +22,6 @@ gem 'simple_form'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'faker'
-gem 'annotate'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
