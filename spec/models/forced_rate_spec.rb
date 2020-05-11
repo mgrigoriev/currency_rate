@@ -16,19 +16,18 @@ describe ForcedRate do
 
   describe '#expire_at' do
     context 'is in the past' do
-      before do
-        subject { FactoryBot.build(:forced_rate, price: '75', expire_at: 1.second.ago) }
-      end
+      subject { FactoryBot.build(:forced_rate, price: '75', expire_at: 1.second.ago) }
 
-      it { expect(subject).not_to be_valid  }
+      it 'is not valid' do
+        expect(subject).not_to be_valid
+        expect(subject.errors[:expire_at]).to include('должно быть в будущем')
+      end
     end
 
     context 'is in the future' do
-      before do
-        subject { FactoryBot.build(:forced_rate, price: '75', expire_at: 1.minute.from_now) }
-      end
+      subject { FactoryBot.build(:forced_rate, price: '75', expire_at: 1.minute.from_now) }
 
-      it { expect(subject).not_to be_valid  }
+      it { expect(subject).to be_valid  }
     end
   end
 end
